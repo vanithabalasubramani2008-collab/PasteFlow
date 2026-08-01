@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-workspace-base text-ide-text font-sans antialiased overflow-hidden;
+  }
+  
+  /* Reset outlines for a cleaner IDE feel */
+  input:focus, select:focus, textarea:focus, button:focus {
+    outline: none;
+  }
+}
+
+.monaco-editor {
+  border-radius: 6px !important;
+  overflow: hidden;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 5px;
+  border: 2px solid #0D0D0D;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4A4A4A;
+}
+
+/* Micro-interaction utilities */
+.glow-violet {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
+}
+.glow-emerald {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+}
