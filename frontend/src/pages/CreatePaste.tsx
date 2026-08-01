@@ -18,7 +18,7 @@ export default function CreatePaste() {
   const handleCreate = async () => {
     setIsSaving(true);
     try {
-      let expirationDate = null;
+      let expirationDate: string | null = null;
       if (expiresIn !== 'never') {
         const date = new Date();
         if (expiresIn === '10m') date.setMinutes(date.getMinutes() + 10);
