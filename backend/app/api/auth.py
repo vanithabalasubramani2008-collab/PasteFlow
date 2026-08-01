@@ -4,6 +4,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from app.database.session import get_db
 from app.models.user import User
+from app.api.deps import get_current_user
 from app.schemas.user import UserCreate, UserResponse, Token, GoogleAuthRequest
 from app.core.security import verify_password, get_password_hash, create_access_token
 from app.core.config import settings
@@ -111,3 +112,10 @@ def logout():
     # Since we use stateless JWT, logout is handled client-side by deleting the token.
     # We provide this endpoint for API completeness and future expansion (e.g. token blacklisting).
     return {"message": "Successfully logged out"}
+
+@router.get("/me", response_model=UserResponse)
+def read_users_me(current_user: User = Depends(get_current_user)):
+    """
+    Get current user.
+    """
+    return current_user

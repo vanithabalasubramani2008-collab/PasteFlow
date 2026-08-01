@@ -27,7 +27,7 @@ const FallbackLoader = () => (
 const queryClient = new QueryClient();
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   
   return (
     <nav className="h-16 bg-workspace-surface border-b border-workspace-border flex items-center justify-between px-6 z-30">
@@ -44,9 +44,14 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-4 text-sm font-mono">
         {user ? (
-          <Link to="/profile" className="text-ide-text hover:text-ide-violet transition-colors flex items-center gap-2">
-            <User size={16} /> Profile
-          </Link>
+          <>
+            <Link to="/profile" className="text-ide-text hover:text-ide-violet transition-colors flex items-center gap-2">
+              <User size={16} /> Profile
+            </Link>
+            <button onClick={logout} className="text-ide-text hover:text-red-500 transition-colors flex items-center gap-2 ml-2">
+              Logout
+            </button>
+          </>
         ) : (
           <Link to="/auth" className="text-ide-text hover:text-ide-violet transition-colors flex items-center gap-2">
             <User size={16} /> Login

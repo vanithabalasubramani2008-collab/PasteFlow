@@ -23,7 +23,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (token) {
-      api.get('/users/me')
+      api.get('/auth/me')
         .then(res => setUser(res.data))
         .catch(() => {
           localStorage.removeItem('pasteflow_token');
